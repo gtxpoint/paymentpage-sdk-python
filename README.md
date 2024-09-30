@@ -30,7 +30,14 @@ payment.payment_id = 'some payment id'
 payment.payment_amount = 1001
 payment.payment_currency = 'USD'
 payment_url = gate.get_purchase_payment_page_url(payment)
+# payment_url = gate.get_purchase_payment_page_url(payment, 'encryption_key') - for necrypted url
 ``` 
+Для шифрования урла желательно использовать ключ не менее 16 символов.
+В случае, если потребуется шифрование урла, то будет необходимо установить библиотеку pycryptodome 
+
+```
+pip install pycryptodome
+```
 
 `payment_url` here is the signed URL.
 
