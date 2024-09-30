@@ -6,7 +6,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name='trxhosts-sdk',
-    version='1.0.3',
+    version='1.0.4',
     url='https://github.com/trxhosts/paymentpage-sdk-python',
     license='MIT',
     long_description=README,

@@ -32,14 +32,14 @@ class Gate(object):
         self.__signatureHandler = SignatureHandler(secret)
         self.__paymentPageUrlBuilder = PaymentPage(self.__signatureHandler, base_url)
 
-    def get_purchase_payment_page_url(self, payment: Payment) -> str:
+    def get_purchase_payment_page_url(self, payment: Payment, encryption_key: str ='') -> str:
         """
         Get URL for purchase payment page
 
         :param Payment payment:
         :return:
         """
-        return self.__paymentPageUrlBuilder.get_url(payment)
+        return self.__paymentPageUrlBuilder.get_url(payment, encryption_key)
 
     def handle_callback(self, data):
         """

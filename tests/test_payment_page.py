@@ -25,3 +25,9 @@ class PaymentPageTest(unittest.TestCase):
             urlparse.parse_qs(urlparse.urlparse(self.compare_url).query),
             urlparse.parse_qs(urlparse.urlparse(self.payment_page.get_url(payment)).query)
         )
+
+    def test_get_url_encrypted(self):
+        payment = Payment('1', 'test-payment')
+        url = self.payment_page.get_url(payment, 'mykey')
+        queryParamsEncrypted = urlparse.parse_qs(urlparse.urlparse(url).query)
+        self.assertEqual(len(queryParamsEncrypted), 0)
