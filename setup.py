@@ -5,9 +5,9 @@ HERE = pathlib.Path(__file__).parent
 README = (HERE / "README.md").read_text()
 
 setup(
-    name='trxhosts-sdk',
-    version='1.0.4',
-    url='https://github.com/trxhosts/paymentpage-sdk-python',
+    name='gtxpoint-sdk',
+    version='1.0.0',
+    url='https://github.com/gtxpoint/paymentpage-sdk-python',
     license='MIT',
     long_description=README,
     long_description_content_type="text/markdown",

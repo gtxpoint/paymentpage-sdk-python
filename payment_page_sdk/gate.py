@@ -23,23 +23,23 @@ class Gate(object):
     __paymentPageUrlBuilder = None
     __signatureHandler = None
 
-    def __init__(self, secret: str, base_url: str = ''):
+    def __init__(self, secret: str):
         """
         Gate constructor
 
         :param str secret: Secret key
         """
         self.__signatureHandler = SignatureHandler(secret)
-        self.__paymentPageUrlBuilder = PaymentPage(self.__signatureHandler, base_url)
+        self.__paymentPageUrlBuilder = PaymentPage(self.__signatureHandler)
 
-    def get_purchase_payment_page_url(self, payment: Payment, encryption_key: str ='') -> str:
+    def get_purchase_payment_page_url(self, base_url: str, payment: Payment, encryption_key: str ='') -> str:
         """
         Get URL for purchase payment page
 
         :param Payment payment:
         :return:
         """
-        return self.__paymentPageUrlBuilder.get_url(payment, encryption_key)
+        return self.__paymentPageUrlBuilder.get_url(base_url, payment, encryption_key)
 
     def handle_callback(self, data):
         """

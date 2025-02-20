@@ -16,18 +16,18 @@ class PaymentPageTest(unittest.TestCase):
     @classmethod
     def setUp(cls):
         signature_handler = SignatureHandler(cls.secret)
-        cls.payment_page = PaymentPage(signature_handler, 'http://test.test/pay')
+        cls.payment_page = PaymentPage(signature_handler)
 
     def test_get_url(self):
         payment = Payment('1', 'test-payment')
         payment.best_before = datetime(2055, 5, 5)
         self.assertEqual(
             urlparse.parse_qs(urlparse.urlparse(self.compare_url).query),
-            urlparse.parse_qs(urlparse.urlparse(self.payment_page.get_url(payment)).query)
+            urlparse.parse_qs(urlparse.urlparse(self.payment_page.get_url('http://test.test/pay', payment)).query)
         )
 
     def test_get_url_encrypted(self):
         payment = Payment('1', 'test-payment')
-        url = self.payment_page.get_url(payment, 'mykey')
+        url = self.payment_page.get_url('http://test.test/pay', payment, 'mykey')
         queryParamsEncrypted = urlparse.parse_qs(urlparse.urlparse(url).query)
         self.assertEqual(len(queryParamsEncrypted), 0)

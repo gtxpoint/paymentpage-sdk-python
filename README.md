@@ -1,9 +1,7 @@
-[![Build Status](https://travis-ci.com/trxhosts/paymentpage-sdk-python.svg?branch=main)](https://travis-ci.com/trxhosts/paymentpage-sdk-python)
-
-# TrxHosts payment page SDK
+# GtxPoint payment page SDK
 
 This is a set of libraries in the Python language to ease integration of your service
-with the TrxHosts Payment Page.
+with the GtxPoint Payment Page.
 
 Please note that for correct SDK operating you must have at least Python 3.5.  
 
@@ -15,7 +13,7 @@ Please note that for correct SDK operating you must have at least Python 3.5.
 
 Install with pip
 ```bash
-pip install trxhosts-sdk
+pip install gtxpoint-sdk
 ```
 
 ### Get URL for payment
@@ -29,8 +27,9 @@ payment = Payment('402')
 payment.payment_id = 'some payment id'
 payment.payment_amount = 1001
 payment.payment_currency = 'USD'
-payment_url = gate.get_purchase_payment_page_url(payment)
-# payment_url = gate.get_purchase_payment_page_url(payment, 'encryption_key') - for necrypted url
+base_url = 'http://your_pp_url'
+payment_url = gate.get_purchase_payment_page_url(base_url, payment)
+# payment_url = gate.get_purchase_payment_page_url(base_url, payment, 'encryption_key') - for necrypted url
 ``` 
 Для шифрования урла желательно использовать ключ не менее 16 символов.
 В случае, если потребуется шифрование урла, то будет необходимо установить библиотеку pycryptodome 
@@ -41,7 +40,7 @@ pip install pycryptodome
 
 `payment_url` here is the signed URL.
 
-### Handle callback from TrxHosts
+### Handle callback
 
 You'll need to autoload this code in order to handle notifications:
 
