@@ -6,7 +6,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name='gtxpoint-sdk',
-    version='1.0.0',
+    version='1.0.1',
     url='https://github.com/gtxpoint/paymentpage-sdk-python',
     license='MIT',
     long_description=README,
